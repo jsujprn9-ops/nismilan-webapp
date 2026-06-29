@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Urusetia — Malam Perdana #NismilanKitoTawan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-dark: #9A7A2E;
+    --black: #0D0D0D;
+    --dark: #1A1A1A;
+    --surface: #1E1E1E;
+    --surface2: #282828;
+    --border: #333;
+    --text: #E8E8E8;
+    --text-muted: #888;
+    --green: #27AE60;
+    --yellow: #F39C12;
+    --red: #C0392B;
+    --blue: #2980B9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--black);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* TOPBAR */
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .topbar-badge {
+    background: var(--gold);
+    color: var(--black);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .topbar-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .topbar-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .topbar-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 8px 14px;
+    border-radius: 7px;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .topbar-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+  .topbar-btn.primary {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--black);
+    font-weight: 600;
+  }
+
+  .topbar-btn.primary:hover { background: var(--gold-light); }
+
+  /* MAIN */
+  .main { padding: 24px; }
+
+  /* STATS GRID */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .stat-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .stat-progress {
+    margin-top: 10px;
+    background: var(--border);
+    border-radius: 4px;
+    height: 4px;
+  }
+
+  .stat-progress-bar {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+    transition: width 0.5s ease;
+  }
+
+  /* FILTERS */
+  .filters {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .filter-search {
+    flex: 1;
+    min-width: 200px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 9px 14px;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+  }
+
+  .filter-search:focus { outline: none; border-color: var(--gold); }
+  .filter-search::placeholder { color: var(--text-muted); }
+
+  .filter-select {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 9px 12px;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .filter-select:focus { outline: none; border-color: var(--gold); }
+  .filter-select option { background: var(--surface2); }
+
+  /* TABLE */
+  .table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .table-header {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .table-header-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .table-count {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  thead th {
+    background: var(--surface2);
+    padding: 10px 16px;
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  tbody tr {
+    border-top: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+
+  tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+  tbody td {
+    padding: 12px 16px;
+    color: var(--text);
+    vertical-align: middle;
+  }
+
+  .td-muted { color: var(--text-muted); font-size: 12px; }
+
+  /* STATUS BADGES */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .badge-approved {
+    background: rgba(39,174,96,0.15);
+    color: var(--green);
+    border: 1px solid rgba(39,174,96,0.3);
+  }
+
+  .badge-pending {
+    background: rgba(243,156,18,0.15);
+    color: var(--yellow);
+    border: 1px solid rgba(243,156,18,0.3);
+  }
+
+  .badge-rejected {
+    background: rgba(192,57,43,0.15);
+    color: var(--red);
+    border: 1px solid rgba(192,57,43,0.3);
+  }
+
+  /* TYPE BADGE */
+  .type-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .type-meja { background: rgba(201,168,76,0.15); color: var(--gold); }
+  .type-kerusi { background: rgba(41,128,185,0.15); color: var(--blue); }
+
+  /* ACTION BUTTONS */
+  .action-row {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .act-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 4px 10px;
+    font-size: 11px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.15s;
+    color: var(--text-muted);
+  }
+
+  .act-btn:hover { color: var(--text); border-color: var(--text-muted); }
+  .act-btn.approve { color: var(--green); border-color: rgba(39,174,96,0.4); }
+  .act-btn.approve:hover { background: rgba(39,174,96,0.1); }
+  .act-btn.reject { color: var(--red); border-color: rgba(192,57,43,0.4); }
+  .act-btn.reject:hover { background: rgba(192,57,43,0.1); }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .modal-overlay.show { display: flex; }
+
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 580px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .modal-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .modal-close {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 22px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 2px;
+  }
+
+  .modal-body { padding: 24px; }
+
+  .modal-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .modal-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .modal-label {
+    min-width: 130px;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-top: 2px;
+  }
+
+  .modal-value {
+    font-size: 14px;
+    color: var(--text);
+    flex: 1;
+  }
+
+  .receipt-preview {
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+  }
+
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+    padding: 16px 24px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .modal-btn {
+    flex: 1;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+  }
+
+  .modal-btn-approve {
+    background: var(--green);
+    color: white;
+  }
+
+  .modal-btn-reject {
+    background: none;
+    border: 1px solid var(--red);
+    color: var(--red);
+  }
+
+  .modal-btn-close {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+
+  /* AI SECTION */
+  .ai-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 24px;
+  }
+
+  .ai-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .ai-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ai-badge {
+    background: rgba(201,168,76,0.15);
+    color: var(--gold);
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+
+  .ai-result {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.7;
+    white-space: pre-wrap;
+    max-height: 400px;
+    overflow-y: auto;
+    display: none;
+  }
+
+  .ai-result.show { display: block; }
+
+  .ai-loader {
+    text-align: center;
+    padding: 20px;
+    display: none;
+  }
+
+  .ai-loader.show { display: block; }
+
+  .spinner {
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--border);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 8px;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* EMPTY STATE */
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+    display: none;
+  }
+
+  .empty-state.show { display: block; }
+
+  /* PAGINATION */
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .page-btns { display: flex; gap: 6px; }
+
+  .page-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+  }
+
+  .page-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .page-btn.active { background: var(--gold); border-color: var(--gold); color: var(--black); font-weight: 600; }
+  .page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .main { padding: 16px; }
+    .topbar { padding: 12px 16px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    table { font-size: 12px; }
+    thead th, tbody td { padding: 8px 10px; }
+    .hide-mobile { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="topbar-badge">Urusetia</div>
+    <div class="topbar-title">Dashboard — #NismilanKitoTawan</div>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn" onclick="refreshData()">↻ Muat Semula</button>
+    <button class="topbar-btn primary" onclick="exportExcel()">↓ Export Excel</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- STATS -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-label">Meja Ditempah</div>
+      <div class="stat-value" id="stat-meja">—</div>
+      <div class="stat-sub">daripada 100 meja</div>
+      <div class="stat-progress">
+        <div class="stat-progress-bar" id="bar-meja" style="width:0%"></div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Kerusi Dijual</div>
+      <div class="stat-value" id="stat-kerusi">—</div>
+      <div class="stat-sub">daripada 1,000 kerusi</div>
+      <div class="stat-progress">
+        <div class="stat-progress-bar" id="bar-kerusi" style="width:0%"></div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Kutipan Dana</div>
+      <div class="stat-value" id="stat-kutipan">—</div>
+      <div class="stat-sub">sasaran RM200,000</div>
+      <div class="stat-progress">
+        <div class="stat-progress-bar" id="bar-kutipan" style="width:0%"></div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Dalam Semakan</div>
+      <div class="stat-value" id="stat-pending">—</div>
+      <div class="stat-sub">perlu disemak</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Akan Hadir</div>
+      <div class="stat-value" id="stat-hadir">—</div>
+      <div class="stat-sub">orang dijangka hadir</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Keperluan Vege</div>
+      <div class="stat-value" id="stat-vege">—</div>
+      <div class="stat-sub">menu vegetarian</div>
+    </div>
+  </div>
+
+  <!-- AI SEAT ARRANGEMENT -->
+  <div class="ai-section">
+    <div class="ai-header">
+      <div class="ai-title">
+        🤖 Cadangan Susunan Meja & Kerusi
+        <span class="ai-badge">AI</span>
+      </div>
+      <button class="topbar-btn" onclick="generateSeating()">Jana Cadangan</button>
+    </div>
+    <p style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">
+      AI akan menganalisis semua pendaftaran dan mencadangkan susunan meja yang optimum berdasarkan kategori, kehadiran, dan keperluan khas.
+    </p>
+    <div class="ai-loader" id="aiLoader">
+      <div class="spinner"></div>
+      <div style="font-size:12px; color:var(--text-muted);">Sedang menganalisis data pendaftaran...</div>
+    </div>
+    <div class="ai-result" id="aiResult"></div>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="filters">
+    <input class="filter-search" type="text" placeholder="🔍 Cari nama, telefon, no. rujukan..." oninput="filterTable(this.value)" id="searchInput">
+    <select class="filter-select" onchange="filterStatus(this.value)" id="statusFilter">
+      <option value="">Semua Status</option>
+      <option value="approved">Disahkan</option>
+      <option value="pending">Dalam Semakan</option>
+      <option value="rejected">Ditolak</option>
+    </select>
+    <select class="filter-select" onchange="filterType(this.value)" id="typeFilter">
+      <option value="">Semua Jenis</option>
+      <option value="meja">Meja</option>
+      <option value="kerusi">Kerusi</option>
+    </select>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-wrap">
+    <div class="table-header">
+      <div class="table-header-title">Senarai Pendaftaran</div>
+      <div class="table-count" id="tableCount">—</div>
+    </div>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>No. Ref</th>
+            <th>Nama</th>
+            <th class="hide-mobile">Telefon</th>
+            <th>Jenis</th>
+            <th>Qty</th>
+            <th>Jumlah</th>
+            <th class="hide-mobile">Hadir</th>
+            <th class="hide-mobile">Menu</th>
+            <th>Status</th>
+            <th>Tindakan</th>
+          </tr>
+        </thead>
+        <tbody id="registrationTable">
+          <tr>
+            <td colspan="10" style="text-align:center; padding:40px; color:var(--text-muted);">
+              <div class="spinner" style="margin:0 auto 12px;"></div>
+              Memuatkan data...
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pagination">
+      <div id="paginationInfo">—</div>
+      <div class="page-btns" id="paginationBtns"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- DETAIL MODAL -->
+<div class="modal-overlay" id="detailModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Detail Pendaftaran</div>
+      <button class="modal-close" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-body" id="modalBody">—</div>
+    <div class="modal-actions" id="modalActions">
+      <button class="modal-btn modal-btn-approve" onclick="approveFromModal()">✓ Sahkan</button>
+      <button class="modal-btn modal-btn-reject" onclick="rejectFromModal()">✕ Tolak</button>
+      <button class="modal-btn modal-btn-close" onclick="closeModal()">Tutup</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const ITEMS_PER_PAGE = 20;
+let allData = [];
+let filteredData = [];
+let currentPage = 1;
+let currentRecord = null;
+let searchVal = '', statusVal = '', typeVal = '';
+
+// ========== LOAD DATA ==========
+async function loadData() {
+  try {
+    const res = await fetch('/api/admin/registrations');
+    if (res.ok) {
+      const data = await res.json();
+      allData = data.registrations || [];
+      applyFilters();
+      updateStats(data.stats);
+    } else {
+      showError();
+    }
+  } catch(e) {
+    showError();
+  }
+}
+
+function showError() {
+  document.getElementById('registrationTable').innerHTML = `
+    <tr><td colspan="10" style="text-align:center; padding:40px; color:var(--text-muted);">
+      Gagal memuatkan data. Semak sambungan internet anda.
+    </td></tr>`;
+}
+
+function updateStats(stats) {
+  if (!stats) return;
+  const safe = v => v ?? '—';
+
+  document.getElementById('stat-meja').textContent = safe(stats.tablesBooked);
+  document.getElementById('stat-kerusi').textContent = safe(stats.seatsTotal);
+  document.getElementById('stat-pending').textContent = safe(stats.pending);
+  document.getElementById('stat-hadir').textContent = safe(stats.attending);
+  document.getElementById('stat-vege').textContent = safe(stats.vegetarian);
+
+  const kutipan = stats.totalCollection || 0;
+  document.getElementById('stat-kutipan').textContent = `RM${(kutipan/1000).toFixed(0)}k`;
+
+  document.getElementById('bar-meja').style.width = Math.min((stats.tablesBooked / 100) * 100, 100) + '%';
+  document.getElementById('bar-kerusi').style.width = Math.min((stats.seatsTotal / 1000) * 100, 100) + '%';
+  document.getElementById('bar-kutipan').style.width = Math.min((kutipan / 200000) * 100, 100) + '%';
+}
+
+// ========== FILTERS ==========
+function filterTable(val) { searchVal = val; applyFilters(); }
+function filterStatus(val) { statusVal = val; applyFilters(); }
+function filterType(val) { typeVal = val; applyFilters(); }
+
+function applyFilters() {
+  filteredData = allData.filter(r => {
+    const q = searchVal.toLowerCase();
+    const matchSearch = !q || r.nama?.toLowerCase().includes(q) || r.telefon?.includes(q) || r.refNo?.toLowerCase().includes(q);
+    const matchStatus = !statusVal || r.status === statusVal;
+    const matchType = !typeVal || r.ticketType === typeVal;
+    return matchSearch && matchStatus && matchType;
+  });
+
+  currentPage = 1;
+  renderTable();
+}
+
+// ========== RENDER TABLE ==========
+function renderTable() {
+  const start = (currentPage - 1) * ITEMS_PER_PAGE;
+  const pageData = filteredData.slice(start, start + ITEMS_PER_PAGE);
+  const tbody = document.getElementById('registrationTable');
+
+  document.getElementById('tableCount').textContent = `${filteredData.length} rekod`;
+
+  if (!pageData.length) {
+    tbody.innerHTML = `<tr><td colspan="10" style="text-align:center; padding:40px; color:var(--text-muted);">Tiada rekod ditemui</td></tr>`;
+  } else {
+    tbody.innerHTML = pageData.map(r => `
+      <tr>
+        <td><span style="font-family:monospace; font-size:12px; color:var(--gold)">${r.refNo || '—'}</span></td>
+        <td>
+          <div style="font-weight:500">${esc(r.nama)}</div>
+          <div class="td-muted">${esc(r.email || '')}</div>
+        </td>
+        <td class="hide-mobile">${esc(r.telefon)}</td>
+        <td><span class="type-badge type-${r.ticketType}">${r.ticketType === 'meja' ? '🪑 Meja' : '💺 Kerusi'}</span></td>
+        <td style="text-align:center">${r.quantity}</td>
+        <td style="font-weight:600">RM${(r.totalAmount||0).toLocaleString()}</td>
+        <td class="hide-mobile">${r.hadir === 'ya' ? `✅ ${r.hadirQty} org` : '—'}</td>
+        <td class="hide-mobile">${r.menu === 'vege' ? '🥗 Vege' : '—'}</td>
+        <td>${statusBadge(r.status)}</td>
+        <td>
+          <div class="action-row">
+            <button class="act-btn" onclick="viewDetail('${r.id}')">Lihat</button>
+            ${r.status === 'pending' ? `
+              <button class="act-btn approve" onclick="updateStatus('${r.id}', 'approved')">✓</button>
+              <button class="act-btn reject" onclick="updateStatus('${r.id}', 'rejected')">✕</button>
+            ` : ''}
+          </div>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  renderPagination();
+}
+
+function statusBadge(status) {
+  const map = {
+    approved: '<span class="badge badge-approved">✓ Disahkan</span>',
+    pending: '<span class="badge badge-pending">⏳ Semakan</span>',
+    rejected: '<span class="badge badge-rejected">✕ Ditolak</span>'
+  };
+  return map[status] || '<span class="badge">—</span>';
+}
+
+function esc(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ========== PAGINATION ==========
+function renderPagination() {
+  const total = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
+  const info = document.getElementById('paginationInfo');
+  const btns = document.getElementById('paginationBtns');
+
+  const start = (currentPage - 1) * ITEMS_PER_PAGE + 1;
+  const end = Math.min(currentPage * ITEMS_PER_PAGE, filteredData.length);
+  info.textContent = filteredData.length ? `${start}–${end} daripada ${filteredData.length}` : '—';
+
+  btns.innerHTML = '';
+  if (total <= 1) return;
+
+  const prevBtn = document.createElement('button');
+  prevBtn.className = 'page-btn';
+  prevBtn.textContent = '←';
+  prevBtn.disabled = currentPage === 1;
+  prevBtn.onclick = () => { currentPage--; renderTable(); };
+  btns.appendChild(prevBtn);
+
+  for (let i = Math.max(1, currentPage - 2); i <= Math.min(total, currentPage + 2); i++) {
+    const btn = document.createElement('button');
+    btn.className = 'page-btn' + (i === currentPage ? ' active' : '');
+    btn.textContent = i;
+    btn.onclick = () => { currentPage = i; renderTable(); };
+    btns.appendChild(btn);
+  }
+
+  const nextBtn = document.createElement('button');
+  nextBtn.className = 'page-btn';
+  nextBtn.textContent = '→';
+  nextBtn.disabled = currentPage === total;
+  nextBtn.onclick = () => { currentPage++; renderTable(); };
+  btns.appendChild(nextBtn);
+}
+
+// ========== STATUS UPDATE ==========
+async function updateStatus(id, status) {
+  const label = status === 'approved' ? 'sahkan' : 'tolak';
+  if (!confirm(`Anda pasti nak ${label} tempahan ini?`)) return;
+
+  try {
+    const res = await fetch(`/api/admin/registrations/${id}/status`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status })
+    });
+
+    if (res.ok) {
+      const idx = allData.findIndex(r => r.id === id);
+      if (idx !== -1) allData[idx].status = status;
+      applyFilters();
+      if (currentRecord?.id === id) {
+        currentRecord.status = status;
+        renderModalActions();
+      }
+    } else {
+      alert('Gagal mengemas kini status. Cuba semula.');
+    }
+  } catch(e) {
+    alert('Ralat sambungan.');
+  }
+}
+
+// ========== DETAIL MODAL ==========
+function viewDetail(id) {
+  currentRecord = allData.find(r => r.id === id);
+  if (!currentRecord) return;
+
+  const r = currentRecord;
+  const isMeja = r.ticketType === 'meja';
+
+  document.getElementById('modalBody').innerHTML = `
+    <div class="modal-row">
+      <div class="modal-label">No. Rujukan</div>
+      <div class="modal-value" style="font-family:monospace; color:var(--gold)">${esc(r.refNo)}</div>
+    </div>
+    <div class="modal-row">
+      <div class="modal-label">Status</div>
+      <div class="modal-value">${statusBadge(r.status)}</div>
+    </div>
+    <div class="modal-row">
+      <div class="modal-label">Nama</div>
+      <div class="modal-value">${esc(r.nama)}</div>
+    </div>
+    <div class="modal-row">
+      <div class="modal-label">Telefon</div>
+      <div class="modal-value">${esc(r.telefon)}</div>
+    </div>
+    <div class="modal-row">
+      <div class="modal-label">Emel</div>
+      <div class="modal-value">${esc(r.email || 'Tiada')}</div>
+    </div>
+    <div class="modal-row">
+      <div class="modal-label">Tempahan</div>
+      <div class="modal-value">${isMeja ? `${r.quantity} Meja (${r.quantity * 10} kerusi)` : `${r.quantity} Kerusi`}</div>
+    </div>
+    <div class="modal-row">
+      <div class="modal-label">Jumlah</div>
+      <div class="modal-value" style="font-weight:700; color:var(--gold)">RM${(r.totalAmount||0).toLocaleString()}</div>
+    </div>
+    <div class="modal-row">
+      <div class="modal-label">Kehadiran</div>
+      <div class="modal-value">${r.hadir === 'ya' ? `Hadir — ${r.hadirQty} orang` : 'Tidak hadir'}</div>
+    </div>
+    <div class="modal-row">
+      <div class="modal-label">Menu</div>
+      <div class="modal-value">${r.menu === 'vege' ? '🥗 Vegetarian' : 'Tiada keperluan khas'}</div>
+    </div>
+    <div class="modal-row">
+      <div class="modal-label">Tarikh Daftar</div>
+      <div class="modal-value">${r.createdAt ? new Date(r.createdAt).toLocaleString('ms-MY') : '—'}</div>
+    </div>
+    <div class="modal-row">
+      <div class="modal-label">Bukti Bayar</div>
+      <div class="modal-value">
+        ${r.receiptUrl
+          ? `<img src="${r.receiptUrl}" class="receipt-preview" alt="Resit"><br>
+             <a href="${r.receiptUrl}" target="_blank" style="color:var(--gold); font-size:12px; margin-top:6px; display:inline-block;">Buka penuh →</a>`
+          : '<span style="color:var(--text-muted)">Tiada fail dimuat naik</span>'
+        }
+      </div>
+    </div>
+    ${r.verifyNote ? `
+    <div class="modal-row">
+      <div class="modal-label">Nota Verifikasi</div>
+      <div class="modal-value" style="color:var(--text-muted); font-size:12px">${esc(r.verifyNote)}</div>
+    </div>` : ''}
+  `;
+
+  renderModalActions();
+  document.getElementById('detailModal').classList.add('show');
+}
+
+function renderModalActions() {
+  const actions = document.getElementById('modalActions');
+  if (!currentRecord) return;
+
+  if (currentRecord.status === 'pending') {
+    actions.innerHTML = `
+      <button class="modal-btn modal-btn-approve" onclick="approveFromModal()">✓ Sahkan Pembayaran</button>
+      <button class="modal-btn modal-btn-reject" onclick="rejectFromModal()">✕ Tolak</button>
+      <button class="modal-btn modal-btn-close" onclick="closeModal()">Tutup</button>
+    `;
+  } else {
+    actions.innerHTML = `<button class="modal-btn modal-btn-close" style="flex:1" onclick="closeModal()">Tutup</button>`;
+  }
+}
+
+function approveFromModal() {
+  if (currentRecord) updateStatus(currentRecord.id, 'approved');
+}
+
+function rejectFromModal() {
+  if (currentRecord) updateStatus(currentRecord.id, 'rejected');
+}
+
+function closeModal() {
+  document.getElementById('detailModal').classList.remove('show');
+  currentRecord = null;
+}
+
+// ========== AI SEATING ==========
+async function generateSeating() {
+  if (!allData.length) {
+    alert('Tiada data pendaftaran untuk dijana.');
+    return;
+  }
+
+  const loader = document.getElementById('aiLoader');
+  const result = document.getElementById('aiResult');
+  loader.classList.add('show');
+  result.classList.remove('show');
+
+  const approvedData = allData.filter(r => r.status === 'approved');
+  if (!approvedData.length) {
+    loader.classList.remove('show');
+    alert('Tiada pendaftaran yang disahkan lagi.');
+    return;
+  }
+
+  const summary = approvedData.map(r =>
+    `- ${r.nama} | ${r.ticketType === 'meja' ? r.quantity + ' meja' : r.quantity + ' kerusi'} | Hadir: ${r.hadir === 'ya' ? r.hadirQty + ' org' : 'tidak'} | Menu: ${r.menu}`
+  ).join('\n');
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1000,
+        messages: [{
+          role: 'user',
+          content: `Kamu adalah pembantu pengurusan majlis. Berdasarkan senarai pendaftaran berikut untuk Majlis Makan Malam Perdana #NismilanKitoTawan (100 meja, 10 kerusi/meja), cadangkan susunan meja yang paling efisien.
+
+Data pendaftaran yang disahkan:
+${summary}
+
+Jumlah meja tersedia: 100
+Jumlah kerusi per meja: 10
+
+Sila berikan:
+1. Cadangan nombor meja untuk setiap pendaftar
+2. Ringkasan susunan (meja mana untuk siapa)
+3. Nota khusus untuk kerusi vegetarian dan keperluan khas
+4. Senarai meja yang masih kosong
+
+Gunakan format yang jelas dan teratur. Tulis dalam Bahasa Melayu.`
+        }]
+      })
+    });
+
+    const data = await res.json();
+    const text = data.content?.map(c => c.text || '').join('') || 'Tiada respons.';
+    result.textContent = text;
+    result.classList.add('show');
+  } catch(e) {
+    result.textContent = 'Ralat menghubungi AI. Sila cuba semula.';
+    result.classList.add('show');
+  } finally {
+    loader.classList.remove('show');
+  }
+}
+
+// ========== EXPORT EXCEL ==========
+async function exportExcel() {
+  try {
+    const res = await fetch('/api/admin/export');
+    if (res.ok) {
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `NismilanKitoTawan_Pendaftaran_${new Date().toISOString().slice(0,10)}.xlsx`;
+      a.click();
+      URL.revokeObjectURL(url);
+    } else {
+      alert('Gagal export. Cuba semula.');
+    }
+  } catch(e) {
+    alert('Ralat sambungan semasa export.');
+  }
+}
+
+function refreshData() {
+  document.getElementById('registrationTable').innerHTML = `
+    <tr><td colspan="10" style="text-align:center; padding:40px; color:var(--text-muted);">
+      <div class="spinner" style="margin:0 auto 12px;"></div>
+      Memuatkan data...
+    </td></tr>`;
+  loadData();
+}
+
+// Close modal on overlay click
+document.getElementById('detailModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+// Init
+loadData();
+setInterval(loadData, 30000); // Auto-refresh every 30s
+</script>
+</body>
+</html>

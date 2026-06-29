@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malam Perdana #NismilanKitoTawan 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-dark: #9A7A2E;
+    --black: #0D0D0D;
+    --dark: #1A1A1A;
+    --surface: #242424;
+    --surface2: #2E2E2E;
+    --border: #3A3A3A;
+    --text: #E8E8E8;
+    --text-muted: #888;
+    --red: #C0392B;
+    --green: #27AE60;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--black);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(160deg, #0D0D0D 0%, #1A1200 50%, #0D0D0D 100%);
+    padding: 60px 20px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--gold-dark);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Amiri', serif;
+    font-size: 14px;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0.9;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 6vw, 64px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .hero-title span {
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    font-family: 'Amiri', serif;
+    font-size: clamp(16px, 3vw, 22px);
+    color: var(--gold-light);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .hero-meta-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+  }
+
+  .hero-meta-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 32px;
+  }
+
+  /* AVAILABILITY BAR */
+  .availability-section {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 20px;
+  }
+
+  .availability-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .avail-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+    text-align: center;
+  }
+
+  .avail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .avail-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .avail-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+  }
+
+  .avail-numbers {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  .avail-remaining {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .avail-total {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .avail-bar-wrap {
+    background: var(--border);
+    border-radius: 4px;
+    height: 4px;
+    overflow: hidden;
+  }
+
+  .avail-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+    border-radius: 4px;
+    transition: width 0.5s ease;
+  }
+
+  /* MAIN CONTAINER */
+  .main {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+
+  /* SECTION HEADER */
+  .section-header {
+    margin-bottom: 24px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  /* STEP INDICATOR */
+  .steps {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    gap: 0;
+  }
+
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+  }
+
+  .step-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    transition: all 0.3s;
+  }
+
+  .step.active .step-num {
+    border-color: var(--gold);
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  .step.done .step-num {
+    border-color: var(--green);
+    background: var(--green);
+    color: white;
+  }
+
+  .step-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .step.active .step-label { color: var(--text); }
+
+  .step-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    margin: 0 8px;
+  }
+
+  /* FORM CARD */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+
+  .card-title {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* FORM ELEMENTS */
+  .form-group {
+    margin-bottom: 18px;
+  }
+
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 7px;
+    letter-spacing: 0.3px;
+  }
+
+  label .required {
+    color: var(--gold);
+    margin-left: 3px;
+  }
+
+  label .optional {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-left: 4px;
+    opacity: 0.7;
+  }
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  input[type="number"],
+  select {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+
+  input:focus, select:focus {
+    outline: none;
+    border-color: var(--gold);
+  }
+
+  input::placeholder { color: var(--text-muted); opacity: 0.5; }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23888' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+
+  select option { background: var(--surface2); }
+
+  /* TICKET SELECTOR */
+  .ticket-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .ticket-option {
+    background: var(--surface2);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    text-align: center;
+  }
+
+  .ticket-option:hover {
+    border-color: var(--gold-dark);
+  }
+
+  .ticket-option.selected {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.08);
+  }
+
+  .ticket-type {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .ticket-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 2px;
+  }
+
+  .ticket-desc {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  /* QUANTITY CONTROL */
+  .qty-row {
+    display: flex;
+    align-items: center;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .qty-btn {
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    color: var(--gold);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+    flex-shrink: 0;
+  }
+
+  .qty-btn:hover { background: rgba(201,168,76,0.1); }
+  .qty-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  .qty-display {
+    flex: 1;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--white);
+    padding: 10px;
+  }
+
+  /* SUMMARY BOX */
+  .summary-box {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 10px;
+    padding: 18px;
+    margin-top: 16px;
+  }
+
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .summary-row:last-child { margin-bottom: 0; }
+
+  .summary-label { color: var(--text-muted); }
+  .summary-value { font-weight: 500; color: var(--text); }
+
+  .summary-divider {
+    height: 1px;
+    background: rgba(201,168,76,0.2);
+    margin: 12px 0;
+  }
+
+  .summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .summary-total-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+  }
+
+  .summary-total-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  /* PAYMENT SECTION */
+  .payment-info {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .payment-bank {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .bank-logo {
+    width: 48px;
+    height: 48px;
+    background: #C0392B;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 10px;
+    color: white;
+    text-align: center;
+    line-height: 1.2;
+    flex-shrink: 0;
+  }
+
+  .bank-details .bank-name {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+  }
+
+  .bank-details .bank-account {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px;
+  }
+
+  .bank-details .bank-holder {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .copy-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: auto;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .copy-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .payment-amount-remind {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .payment-amount-big {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .payment-note {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* UPLOAD AREA */
+  .upload-area {
+    border: 2px dashed var(--border);
+    border-radius: 10px;
+    padding: 32px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .upload-area:hover, .upload-area.dragover {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.04);
+  }
+
+  .upload-area input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+
+  .upload-icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+    opacity: 0.5;
+  }
+
+  .upload-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .upload-hint {
+    font-size: 12px;
+    color: var(--text-muted);
+    opacity: 0.6;
+  }
+
+  .upload-preview {
+    display: none;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: rgba(39,174,96,0.1);
+    border: 1px solid rgba(39,174,96,0.3);
+    border-radius: 8px;
+    margin-top: 12px;
+  }
+
+  .upload-preview.show { display: flex; }
+
+  .preview-icon { font-size: 24px; }
+
+  .preview-name {
+    font-size: 13px;
+    color: var(--text);
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .preview-remove {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    padding: 2px;
+  }
+
+  /* RADIO GROUPS */
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .radio-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .radio-option:hover { border-color: var(--gold-dark); }
+  .radio-option.selected { border-color: var(--gold); background: rgba(201,168,76,0.06); }
+
+  .radio-option input[type="radio"] { display: none; }
+
+  .radio-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .radio-option.selected .radio-dot {
+    border-color: var(--gold);
+    background: var(--gold);
+  }
+
+  .radio-option.selected .radio-dot::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--black);
+    border-radius: 50%;
+  }
+
+  .radio-text { font-size: 14px; color: var(--text); }
+
+  /* BUTTONS */
+  .btn-primary {
+    width: 100%;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    border: none;
+    border-radius: 10px;
+    padding: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--black);
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 24px rgba(201,168,76,0.3);
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .btn-secondary {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--text-muted);
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 12px;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover { border-color: var(--text-muted); color: var(--text); }
+
+  /* ATTENDANCE QTY */
+  .attend-qty-wrap {
+    margin-top: 12px;
+    display: none;
+  }
+
+  .attend-qty-wrap.show { display: block; }
+
+  /* EMAIL NOTICE */
+  .email-notice {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .email-notice span { flex: 1; }
+
+  /* SUCCESS PAGE */
+  .success-page {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  .success-page.show { display: block; }
+
+  .success-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(39,174,96,0.15);
+    border: 2px solid var(--green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    margin: 0 auto 24px;
+  }
+
+  .success-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .success-subtitle {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+
+  .success-ref {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 24px;
+    text-align: left;
+  }
+
+  .success-ref-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .success-ref-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 8px;
+    gap: 12px;
+  }
+
+  .success-ref-label { color: var(--text-muted); flex-shrink: 0; }
+  .success-ref-value { color: var(--text); font-weight: 500; text-align: right; }
+
+  /* VERIFY BADGE */
+  .verify-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(39,174,96,0.1);
+    border: 1px solid rgba(39,174,96,0.3);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    color: var(--green);
+    margin-bottom: 16px;
+  }
+
+  .verify-badge-pending {
+    background: rgba(243,156,18,0.1);
+    border-color: rgba(243,156,18,0.3);
+    color: #F39C12;
+  }
+
+  /* STEP PAGES */
+  .step-page { display: none; }
+  .step-page.active { display: block; }
+
+  /* ERROR */
+  .field-error {
+    font-size: 12px;
+    color: #E74C3C;
+    margin-top: 5px;
+    display: none;
+  }
+  .field-error.show { display: block; }
+
+  input.error, select.error { border-color: #E74C3C; }
+
+  /* LOADER */
+  .loader {
+    display: none;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .loader.show { display: block; }
+
+  .spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid var(--border);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 12px;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* FOOTER */
+  .page-footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    opacity: 0.6;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 480px) {
+    .hero { padding: 40px 16px 36px; }
+    .main { padding: 24px 16px 60px; }
+    .card { padding: 20px 16px; }
+    .ticket-grid { grid-template-columns: 1fr; }
+    .hero-meta { gap: 20px; }
+    .avail-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Beradat · Muafakat · Berkat</div>
+  <div class="hero-title">#Nismilan<span>KitoTawan</span></div>
+  <div class="hero-subtitle">Majlis Makan Malam Perdana PAS Negeri Sembilan</div>
+  <div class="hero-divider"></div>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">Tarikh</div>
+      <div class="hero-meta-value">12 Julai 2026 (Sabtu)</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">Masa</div>
+      <div class="hero-meta-value">7.00 Malam</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">Tempat</div>
+      <div class="hero-meta-value">Casa Lagenda, Seremban</div>
+    </div>
+  </div>
+</div>
+
+<!-- AVAILABILITY -->
+<div class="availability-section">
+  <div class="availability-inner">
+    <div class="avail-title">Ketersediaan Tempat</div>
+    <div class="avail-grid">
+      <div class="avail-card">
+        <div class="avail-label">Meja Tersedia</div>
+        <div class="avail-numbers">
+          <div class="avail-remaining" id="tablesRemaining">100</div>
+          <div class="avail-total">/ 100 meja</div>
+        </div>
+        <div class="avail-bar-wrap">
+          <div class="avail-bar" id="tablesBar" style="width:100%"></div>
+        </div>
+      </div>
+      <div class="avail-card">
+        <div class="avail-label">Kerusi Tersedia</div>
+        <div class="avail-numbers">
+          <div class="avail-remaining" id="seatsRemaining">1000</div>
+          <div class="avail-total">/ 1000 kerusi</div>
+        </div>
+        <div class="avail-bar-wrap">
+          <div class="avail-bar" id="seatsBar" style="width:100%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main" id="formSection">
+
+  <!-- STEP INDICATORS -->
+  <div class="steps" id="stepIndicator">
+    <div class="step active" id="step-ind-1">
+      <div class="step-num">1</div>
+      <div class="step-label">Tempahan</div>
+    </div>
+    <div class="step-line"></div>
+    <div class="step" id="step-ind-2">
+      <div class="step-num">2</div>
+      <div class="step-label">Maklumat</div>
+    </div>
+    <div class="step-line"></div>
+    <div class="step" id="step-ind-3">
+      <div class="step-num">3</div>
+      <div class="step-label">Pembayaran</div>
+    </div>
+  </div>
+
+  <!-- STEP 1: TICKET SELECTION -->
+  <div class="step-page active" id="page1">
+    <div class="section-header">
+      <div class="section-label">Langkah 1</div>
+      <div class="section-title">Pilih Tempahan Anda</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Jenis Tempahan</div>
+      <div class="ticket-grid">
+        <div class="ticket-option" id="opt-meja" onclick="selectTicketType('meja')">
+          <div class="ticket-type">Meja Penuh</div>
+          <div class="ticket-price">RM2,000</div>
+          <div class="ticket-desc">10 kerusi / meja</div>
+        </div>
+        <div class="ticket-option" id="opt-kerusi" onclick="selectTicketType('kerusi')">
+          <div class="ticket-type">Kerusi Sahaja</div>
+          <div class="ticket-price">RM200</div>
+          <div class="ticket-desc">Per kerusi</div>
+        </div>
+      </div>
+
+      <!-- Meja quantity -->
+      <div id="meja-qty-section" style="display:none">
+        <label>Bilangan Meja <span class="required">*</span></label>
+        <div class="qty-row">
+          <button class="qty-btn" onclick="changeQty('meja', -1)">−</button>
+          <div class="qty-display" id="meja-qty-display">1</div>
+          <button class="qty-btn" onclick="changeQty('meja', 1)">+</button>
+        </div>
+      </div>
+
+      <!-- Kerusi quantity -->
+      <div id="kerusi-qty-section" style="display:none">
+        <label>Bilangan Kerusi <span class="required">*</span></label>
+        <div class="qty-row">
+          <button class="qty-btn" onclick="changeQty('kerusi', -1)">−</button>
+          <div class="qty-display" id="kerusi-qty-display">1</div>
+          <button class="qty-btn" onclick="changeQty('kerusi', 1)">+</button>
+        </div>
+        <div style="font-size:12px; color:var(--text-muted); margin-top:8px;">
+          Nota: Setiap meja memuatkan 10 kerusi. Kerusi anda akan digabung bersama pembeli lain jika berkenaan.
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="summary-box" id="summaryBox" style="display:none">
+        <div class="summary-row">
+          <span class="summary-label" id="summ-type">—</span>
+          <span class="summary-value" id="summ-qty">—</span>
+        </div>
+        <div class="summary-divider"></div>
+        <div class="summary-total">
+          <span class="summary-total-label">Jumlah Bayar</span>
+          <span class="summary-total-amount" id="summ-total">RM0</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-primary" onclick="goToStep(2)" id="btn-step1">Teruskan →</button>
+  </div>
+
+  <!-- STEP 2: BUYER INFO -->
+  <div class="step-page" id="page2">
+    <div class="section-header">
+      <div class="section-label">Langkah 2</div>
+      <div class="section-title">Maklumat Pembeli</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Butiran Peribadi</div>
+
+      <div class="form-group">
+        <label>Nama Penuh <span class="required">*</span></label>
+        <input type="text" id="inp-nama" placeholder="Nama penuh seperti dalam IC">
+        <div class="field-error" id="err-nama">Sila masukkan nama penuh</div>
+      </div>
+
+      <div class="form-group">
+        <label>No. Telefon <span class="required">*</span></label>
+        <input type="tel" id="inp-tel" placeholder="01X-XXXXXXXX">
+        <div class="field-error" id="err-tel">Sila masukkan nombor telefon yang sah</div>
+      </div>
+
+      <div class="form-group">
+        <label>Emel <span class="optional">(pilihan — untuk pengesahan)</span></label>
+        <input type="email" id="inp-email" placeholder="contoh@email.com">
+        <div class="email-notice">
+          <span>📧</span>
+          <span>Pengesahan tempahan akan dihantar ke emel ini. Sila pastikan emel adalah betul.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Kehadiran & Keperluan Khas</div>
+
+      <div class="form-group">
+        <label>Adakah anda akan hadir? <span class="required">*</span></label>
+        <div class="radio-group">
+          <div class="radio-option" onclick="selectRadio('hadir', 'ya', this)">
+            <input type="radio" name="hadir" value="ya">
+            <div class="radio-dot"></div>
+            <span class="radio-text">Ya, saya akan hadir</span>
+          </div>
+          <div class="radio-option" onclick="selectRadio('hadir', 'tidak', this)">
+            <input type="radio" name="hadir" value="tidak">
+            <div class="radio-dot"></div>
+            <span class="radio-text">Beli meja/kerusi sahaja (tidak hadir)</span>
+          </div>
+        </div>
+        <div class="field-error" id="err-hadir">Sila pilih status kehadiran</div>
+
+        <div class="attend-qty-wrap" id="attendQtyWrap">
+          <label style="margin-top:14px;">Berapa orang yang akan hadir? <span class="required">*</span></label>
+          <input type="number" id="inp-hadir-qty" min="1" placeholder="Contoh: 5" style="margin-top:4px;">
+          <div class="field-error" id="err-hadir-qty">Sila masukkan bilangan yang akan hadir</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Menu Khusus</label>
+        <div class="radio-group">
+          <div class="radio-option selected" onclick="selectRadio('menu', 'tiada', this)" id="menu-tiada">
+            <input type="radio" name="menu" value="tiada" checked>
+            <div class="radio-dot"></div>
+            <span class="radio-text">Tiada keperluan khas</span>
+          </div>
+          <div class="radio-option" onclick="selectRadio('menu', 'vege', this)">
+            <input type="radio" name="menu" value="vege">
+            <div class="radio-dot"></div>
+            <span class="radio-text">Vegetarian</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-secondary" onclick="goToStep(1)">← Kembali</button>
+    <button class="btn-primary" onclick="goToStep(3)">Teruskan ke Pembayaran →</button>
+  </div>
+
+  <!-- STEP 3: PAYMENT -->
+  <div class="step-page" id="page3">
+    <div class="section-header">
+      <div class="section-label">Langkah 3</div>
+      <div class="section-title">Pembayaran</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Jumlah Yang Perlu Dibayar</div>
+      <div class="payment-amount-remind">Sila transfer tepat sebanyak</div>
+      <div class="payment-amount-big" id="pay-amount-display">RM0</div>
+      <div class="payment-note">ke akaun berikut</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Maklumat Akaun Bank</div>
+      <div class="payment-bank">
+        <div class="bank-logo">BANK<br>ISLAM</div>
+        <div class="bank-details">
+          <div class="bank-name">Bank Islam Malaysia Berhad</div>
+          <div class="bank-account">0501-2010-0798-26</div>
+          <div class="bank-holder">Jabatan Pilihan Raya PAS Negeri Sembilan</div>
+        </div>
+        <button class="copy-btn" onclick="copyAccount()">Salin</button>
+      </div>
+      <div style="text-align:center; font-size:13px; color:var(--text-muted); margin-bottom:8px;">atau imbas DuitNow QR</div>
+      <div style="text-align:center; font-size:12px; color:var(--text-muted); background:var(--surface2); border-radius:8px; padding:16px;">
+        📱 QR DuitNow tersedia di kaunter pendaftaran atau hubungi Bendahari JPRN: <strong>013-6769 492</strong>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Muat Naik Bukti Pembayaran</div>
+      <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Sila muat naik tangkapan skrin atau gambar resit pemindahan.</p>
+
+      <div class="upload-area" id="uploadArea">
+        <input type="file" id="receiptFile" accept="image/*,.pdf" onchange="handleFileUpload(this)">
+        <div class="upload-icon">📎</div>
+        <div class="upload-text">Klik atau seret fail ke sini</div>
+        <div class="upload-hint">JPG, PNG atau PDF · Saiz maksimum 10MB</div>
+      </div>
+
+      <div class="upload-preview" id="uploadPreview">
+        <div class="preview-icon">🖼️</div>
+        <div class="preview-name" id="previewName"></div>
+        <button class="preview-remove" onclick="removeFile()">×</button>
+      </div>
+    </div>
+
+    <div class="loader" id="submitLoader">
+      <div class="spinner"></div>
+      <div style="font-size:13px; color:var(--text-muted);">Sedang memproses tempahan anda...</div>
+    </div>
+
+    <button class="btn-secondary" onclick="goToStep(2)">← Kembali</button>
+    <button class="btn-primary" onclick="submitRegistration()" id="btn-submit">Hantar Tempahan</button>
+  </div>
+
+</div>
+
+<!-- SUCCESS PAGE -->
+<div class="success-page" id="successPage">
+  <div class="success-icon">✓</div>
+  <div class="verify-badge" id="verifyBadge">✓ Pembayaran Disahkan</div>
+  <div class="success-title">Tempahan Berjaya!</div>
+  <div class="success-subtitle" id="successSubtitle">
+    Terima kasih atas sokongan anda.<br>
+    Pengesahan telah dihantar ke emel anda.
+  </div>
+
+  <div class="success-ref" id="successRef">
+    <div class="success-ref-title">Ringkasan Tempahan</div>
+    <div class="success-ref-row">
+      <span class="success-ref-label">No. Rujukan</span>
+      <span class="success-ref-value" id="ref-no">—</span>
+    </div>
+    <div class="success-ref-row">
+      <span class="success-ref-label">Nama</span>
+      <span class="success-ref-value" id="ref-nama">—</span>
+    </div>
+    <div class="success-ref-row">
+      <span class="success-ref-label">Tempahan</span>
+      <span class="success-ref-value" id="ref-tempahan">—</span>
+    </div>
+    <div class="success-ref-row">
+      <span class="success-ref-label">Jumlah Dibayar</span>
+      <span class="success-ref-value" id="ref-jumlah">—</span>
+    </div>
+    <div class="success-ref-row">
+      <span class="success-ref-label">Status</span>
+      <span class="success-ref-value" id="ref-status">—</span>
+    </div>
+  </div>
+
+  <p style="font-size:13px; color:var(--text-muted); line-height:1.7;">
+    Untuk sebarang pertanyaan, hubungi:<br>
+    <strong style="color:var(--text);">Bendahari JPRN: 013-6769 492</strong>
+  </p>
+</div>
+
+<div class="page-footer">
+  Malam Perdana #NismilanKitoTawan 2026 · PAS Negeri Sembilan · Casa Lagenda Convention Center, Seremban
+</div>
+
+<script>
+// ========== STATE ==========
+const STATE = {
+  ticketType: null,
+  mejaQty: 1,
+  kerusiQty: 1,
+  totalAmount: 0,
+  receiptFile: null,
+  formData: {}
+};
+
+const TOTAL_MEJA = 100;
+const TOTAL_KERUSI = 1000;
+const PRICE_MEJA = 2000;
+const PRICE_KERUSI = 200;
+
+// Radio selections state
+const radioState = {
+  hadir: null,
+  menu: 'tiada'
+};
+
+// ========== AVAILABILITY (from backend) ==========
+async function loadAvailability() {
+  try {
+    const res = await fetch('/api/availability');
+    if (res.ok) {
+      const data = await res.json();
+      updateAvailabilityUI(data.tablesBooked, data.seatsBooked);
+    }
+  } catch(e) {
+    // Fail silently — show full availability as default
+  }
+}
+
+function updateAvailabilityUI(tablesBooked, seatsBooked) {
+  const tablesLeft = TOTAL_MEJA - tablesBooked;
+  const seatsLeft = TOTAL_KERUSI - seatsBooked;
+
+  document.getElementById('tablesRemaining').textContent = tablesLeft;
+  document.getElementById('seatsRemaining').textContent = seatsLeft;
+  document.getElementById('tablesBar').style.width = (tablesLeft / TOTAL_MEJA * 100) + '%';
+  document.getElementById('seatsBar').style.width = (seatsLeft / TOTAL_KERUSI * 100) + '%';
+}
+
+// ========== TICKET TYPE ==========
+function selectTicketType(type) {
+  STATE.ticketType = type;
+
+  document.getElementById('opt-meja').classList.toggle('selected', type === 'meja');
+  document.getElementById('opt-kerusi').classList.toggle('selected', type === 'kerusi');
+
+  document.getElementById('meja-qty-section').style.display = type === 'meja' ? 'block' : 'none';
+  document.getElementById('kerusi-qty-section').style.display = type === 'kerusi' ? 'block' : 'none';
+
+  updateSummary();
+}
+
+function changeQty(type, delta) {
+  if (type === 'meja') {
+    STATE.mejaQty = Math.max(1, STATE.mejaQty + delta);
+    document.getElementById('meja-qty-display').textContent = STATE.mejaQty;
+  } else {
+    STATE.kerusiQty = Math.max(1, STATE.kerusiQty + delta);
+    document.getElementById('kerusi-qty-display').textContent = STATE.kerusiQty;
+  }
+  updateSummary();
+}
+
+function updateSummary() {
+  if (!STATE.ticketType) return;
+
+  const isMeja = STATE.ticketType === 'meja';
+  const qty = isMeja ? STATE.mejaQty : STATE.kerusiQty;
+  const price = isMeja ? PRICE_MEJA : PRICE_KERUSI;
+  STATE.totalAmount = qty * price;
+
+  const typLabel = isMeja ? `${qty} Meja × RM2,000` : `${qty} Kerusi × RM200`;
+  document.getElementById('summ-type').textContent = isMeja ? 'Meja Penuh' : 'Kerusi';
+  document.getElementById('summ-qty').textContent = typLabel;
+  document.getElementById('summ-total').textContent = `RM${STATE.totalAmount.toLocaleString()}`;
+  document.getElementById('summaryBox').style.display = 'block';
+  document.getElementById('pay-amount-display').textContent = `RM${STATE.totalAmount.toLocaleString()}`;
+}
+
+// ========== RADIO SELECTION ==========
+function selectRadio(group, value, el) {
+  radioState[group] = value;
+
+  // Deselect siblings
+  el.closest('.radio-group').querySelectorAll('.radio-option').forEach(opt => {
+    opt.classList.remove('selected');
+  });
+  el.classList.add('selected');
+
+  if (group === 'hadir') {
+    const wrap = document.getElementById('attendQtyWrap');
+    wrap.classList.toggle('show', value === 'ya');
+  }
+}
+
+// ========== STEP NAVIGATION ==========
+function goToStep(step) {
+  if (step === 2 && !validateStep1()) return;
+  if (step === 3 && !validateStep2()) return;
+
+  for (let i = 1; i <= 3; i++) {
+    document.getElementById(`page${i}`).classList.toggle('active', i === step);
+    const ind = document.getElementById(`step-ind-${i}`);
+    ind.classList.remove('active', 'done');
+    if (i === step) ind.classList.add('active');
+    if (i < step) ind.classList.add('done');
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function validateStep1() {
+  if (!STATE.ticketType) {
+    alert('Sila pilih jenis tempahan terlebih dahulu.');
+    return false;
+  }
+  return true;
+}
+
+function validateStep2() {
+  let valid = true;
+
+  const nama = document.getElementById('inp-nama').value.trim();
+  const tel = document.getElementById('inp-tel').value.trim();
+
+  // Nama
+  const errNama = document.getElementById('err-nama');
+  if (!nama) {
+    errNama.classList.add('show');
+    document.getElementById('inp-nama').classList.add('error');
+    valid = false;
+  } else {
+    errNama.classList.remove('show');
+    document.getElementById('inp-nama').classList.remove('error');
+  }
+
+  // Tel
+  const errTel = document.getElementById('err-tel');
+  if (!tel || tel.length < 9) {
+    errTel.classList.add('show');
+    document.getElementById('inp-tel').classList.add('error');
+    valid = false;
+  } else {
+    errTel.classList.remove('show');
+    document.getElementById('inp-tel').classList.remove('error');
+  }
+
+  // Hadir
+  const errHadir = document.getElementById('err-hadir');
+  if (!radioState.hadir) {
+    errHadir.classList.add('show');
+    valid = false;
+  } else {
+    errHadir.classList.remove('show');
+  }
+
+  // Hadir qty
+  if (radioState.hadir === 'ya') {
+    const hadirQty = document.getElementById('inp-hadir-qty').value;
+    const errHadirQty = document.getElementById('err-hadir-qty');
+    if (!hadirQty || parseInt(hadirQty) < 1) {
+      errHadirQty.classList.add('show');
+      valid = false;
+    } else {
+      errHadirQty.classList.remove('show');
+    }
+  }
+
+  if (valid) {
+    STATE.formData = {
+      nama: nama,
+      telefon: tel,
+      email: document.getElementById('inp-email').value.trim(),
+      hadir: radioState.hadir,
+      hadirQty: radioState.hadir === 'ya' ? document.getElementById('inp-hadir-qty').value : 0,
+      menu: radioState.menu
+    };
+  }
+
+  return valid;
+}
+
+// ========== FILE UPLOAD ==========
+function handleFileUpload(input) {
+  if (input.files && input.files[0]) {
+    STATE.receiptFile = input.files[0];
+    document.getElementById('previewName').textContent = STATE.receiptFile.name;
+    document.getElementById('uploadPreview').classList.add('show');
+  }
+}
+
+function removeFile() {
+  STATE.receiptFile = null;
+  document.getElementById('receiptFile').value = '';
+  document.getElementById('uploadPreview').classList.remove('show');
+}
+
+// Drag and drop
+const uploadArea = document.getElementById('uploadArea');
+uploadArea.addEventListener('dragover', e => { e.preventDefault(); uploadArea.classList.add('dragover'); });
+uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
+uploadArea.addEventListener('drop', e => {
+  e.preventDefault();
+  uploadArea.classList.remove('dragover');
+  const file = e.dataTransfer.files[0];
+  if (file) {
+    STATE.receiptFile = file;
+    document.getElementById('previewName').textContent = file.name;
+    document.getElementById('uploadPreview').classList.add('show');
+  }
+});
+
+// ========== COPY ACCOUNT ==========
+function copyAccount() {
+  navigator.clipboard.writeText('05012010079826').then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = 'Disalin ✓';
+    setTimeout(() => btn.textContent = 'Salin', 2000);
+  });
+}
+
+// ========== SUBMIT ==========
+async function submitRegistration() {
+  if (!STATE.receiptFile) {
+    alert('Sila muat naik bukti pembayaran terlebih dahulu.');
+    return;
+  }
+
+  const loader = document.getElementById('submitLoader');
+  const btn = document.getElementById('btn-submit');
+  loader.classList.add('show');
+  btn.disabled = true;
+
+  try {
+    const formData = new FormData();
+    formData.append('receipt', STATE.receiptFile);
+    formData.append('ticketType', STATE.ticketType);
+    formData.append('quantity', STATE.ticketType === 'meja' ? STATE.mejaQty : STATE.kerusiQty);
+    formData.append('totalAmount', STATE.totalAmount);
+    formData.append('nama', STATE.formData.nama);
+    formData.append('telefon', STATE.formData.telefon);
+    formData.append('email', STATE.formData.email);
+    formData.append('hadir', STATE.formData.hadir);
+    formData.append('hadirQty', STATE.formData.hadirQty);
+    formData.append('menu', STATE.formData.menu);
+
+    const res = await fetch('/api/register', {
+      method: 'POST',
+      body: formData
+    });
+
+    const result = await res.json();
+
+    if (result.success) {
+      showSuccess(result);
+    } else {
+      alert(result.message || 'Ralat berlaku. Sila cuba semula atau hubungi kami.');
+    }
+  } catch (err) {
+    alert('Ralat sambungan. Sila cuba semula.');
+  } finally {
+    loader.classList.remove('show');
+    btn.disabled = false;
+  }
+}
+
+function showSuccess(result) {
+  document.getElementById('formSection').style.display = 'none';
+  document.getElementById('stepIndicator').style.display = 'none';
+
+  const successPage = document.getElementById('successPage');
+  successPage.classList.add('show');
+
+  const isMeja = STATE.ticketType === 'meja';
+  const qty = isMeja ? STATE.mejaQty : STATE.kerusiQty;
+
+  document.getElementById('ref-no').textContent = result.refNo || '—';
+  document.getElementById('ref-nama').textContent = STATE.formData.nama;
+  document.getElementById('ref-tempahan').textContent = isMeja
+    ? `${qty} Meja (${qty * 10} kerusi)`
+    : `${qty} Kerusi`;
+  document.getElementById('ref-jumlah').textContent = `RM${STATE.totalAmount.toLocaleString()}`;
+  document.getElementById('ref-status').textContent = result.verified ? '✅ Disahkan' : '⏳ Dalam Semakan';
+
+  const badge = document.getElementById('verifyBadge');
+  if (!result.verified) {
+    badge.className = 'verify-badge verify-badge-pending';
+    badge.textContent = '⏳ Dalam Semakan Urusetia';
+  }
+
+  if (!STATE.formData.email) {
+    document.getElementById('successSubtitle').innerHTML =
+      'Terima kasih atas sokongan anda.<br>Simpan nombor rujukan ini sebagai bukti tempahan.';
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Init
+loadAvailability();
+</script>
+</body>
+</html>
