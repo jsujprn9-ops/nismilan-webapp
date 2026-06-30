@@ -1011,11 +1011,11 @@
         <div class="ticket-option" id="opt-meja" onclick="selectTicketType('meja')">
           <div class="ticket-type">Meja Penuh</div>
           <div class="ticket-price">RM2,000</div>
-          <div class="ticket-desc">10 kerusi / meja</div>
+          <div class="ticket-desc">8 kerusi / meja</div>
         </div>
         <div class="ticket-option" id="opt-kerusi" onclick="selectTicketType('kerusi')">
           <div class="ticket-type">Kerusi Sahaja</div>
-          <div class="ticket-price">RM200</div>
+          <div class="ticket-price">RM250</div>
           <div class="ticket-desc">Per kerusi</div>
         </div>
       </div>
@@ -1255,9 +1255,9 @@ const STATE = {
 };
 
 const TOTAL_MEJA = 100;
-const TOTAL_KERUSI = 1000;
+const TOTAL_KERUSI = 800;
 const PRICE_MEJA = 2000;
-const PRICE_KERUSI = 200;
+const PRICE_KERUSI = 250;
 
 // Radio selections state
 const radioState = {
@@ -1320,7 +1320,7 @@ function updateSummary() {
   const price = isMeja ? PRICE_MEJA : PRICE_KERUSI;
   STATE.totalAmount = qty * price;
 
-  const typLabel = isMeja ? `${qty} Meja × RM2,000` : `${qty} Kerusi × RM200`;
+  const typLabel = isMeja ? `${qty} Meja × RM2,000` : `${qty} Kerusi × RM250`;
   document.getElementById('summ-type').textContent = isMeja ? 'Meja Penuh' : 'Kerusi';
   document.getElementById('summ-qty').textContent = typLabel;
   document.getElementById('summ-total').textContent = `RM${STATE.totalAmount.toLocaleString()}`;
