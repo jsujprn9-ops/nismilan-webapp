@@ -966,8 +966,8 @@
       <div class="avail-card">
         <div class="avail-label">Kerusi Tersedia</div>
         <div class="avail-numbers">
-          <div class="avail-remaining" id="seatsRemaining">1000</div>
-          <div class="avail-total">/ 1000 kerusi</div>
+          <div class="avail-remaining" id="seatsRemaining">800</div>
+          <div class="avail-total">/ 800 kerusi</div>
         </div>
         <div class="avail-bar-wrap">
           <div class="avail-bar" id="seatsBar" style="width:100%"></div>
@@ -1039,7 +1039,7 @@
           <button class="qty-btn" onclick="changeQty('kerusi', 1)">+</button>
         </div>
         <div style="font-size:12px; color:var(--text-muted); margin-top:8px;">
-          Nota: Setiap meja memuatkan 10 kerusi. Kerusi anda akan digabung bersama pembeli lain jika berkenaan.
+          Nota: Setiap meja memuatkan 8 kerusi. Kerusi anda akan digabung bersama pembeli lain jika berkenaan.
         </div>
       </div>
 
@@ -1528,7 +1528,7 @@ function showSuccess(result) {
   document.getElementById('ref-no').textContent = result.refNo || '—';
   document.getElementById('ref-nama').textContent = STATE.formData.nama;
   document.getElementById('ref-tempahan').textContent = isMeja
-    ? `${qty} Meja (${qty * 10} kerusi)`
+    ? `${qty} Meja (${qty * 8} kerusi)`
     : `${qty} Kerusi`;
   document.getElementById('ref-jumlah').textContent = `RM${STATE.totalAmount.toLocaleString()}`;
   document.getElementById('ref-status').textContent = result.verified ? '✅ Disahkan' : '⏳ Dalam Semakan';
