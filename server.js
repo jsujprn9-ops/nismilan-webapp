@@ -1,6 +1,8 @@
 const express = require('express');
 const multer = require('multer');
 const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
+const resend = new Resend(process.env.RESEND_API_KEY);
 const fs = require('fs');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
