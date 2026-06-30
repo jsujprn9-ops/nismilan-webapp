@@ -933,7 +933,7 @@ function viewDetail(id) {
     </div>
     <div class="modal-row">
       <div class="modal-label">Tempahan</div>
-      <div class="modal-value">${isMeja ? `${r.quantity} Meja (${r.quantity * 10} kerusi)` : `${r.quantity} Kerusi`}</div>
+      <div class="modal-value">${isMeja ? `${r.quantity} Meja (${r.quantity * 8} kerusi)` : `${r.quantity} Kerusi`}</div>
     </div>
     <div class="modal-row">
       <div class="modal-label">Jumlah</div>
@@ -1032,13 +1032,13 @@ async function generateSeating() {
         max_tokens: 1000,
         messages: [{
           role: 'user',
-          content: `Kamu adalah pembantu pengurusan majlis. Berdasarkan senarai pendaftaran berikut untuk Majlis Makan Malam Perdana #NismilanKitoTawan (100 meja, 10 kerusi/meja), cadangkan susunan meja yang paling efisien.
+          content: `Kamu adalah pembantu pengurusan majlis. Berdasarkan senarai pendaftaran berikut untuk Majlis Makan Malam Perdana #NismilanKitoTawan (100 meja, 8 kerusi/meja), cadangkan susunan meja yang paling efisien.
 
 Data pendaftaran yang disahkan:
 ${summary}
 
 Jumlah meja tersedia: 100
-Jumlah kerusi per meja: 10
+Jumlah kerusi per meja: 8
 
 Sila berikan:
 1. Cadangan nombor meja untuk setiap pendaftar
