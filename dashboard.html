@@ -762,7 +762,7 @@ function updateStats(stats) {
   document.getElementById('stat-kutipan').textContent = `RM${(kutipan/1000).toFixed(0)}k`;
 
   document.getElementById('bar-meja').style.width = Math.min((stats.tablesBooked / 100) * 100, 100) + '%';
-  document.getElementById('bar-kerusi').style.width = Math.min((stats.seatsTotal / 1000) * 100, 100) + '%';
+  document.getElementById('bar-kerusi').style.width = Math.min((stats.seatsTotal / 800) * 100, 100) + '%';
   document.getElementById('bar-kutipan').style.width = Math.min((kutipan / 200000) * 100, 100) + '%';
 }
 
