@@ -52,7 +52,7 @@ function computeStats(registrations) {
   let tablesBooked = 0, seatsBooked = 0, totalCollection = 0, attending = 0, vegetarian = 0;
   approved.forEach(r => {
     const qty = parseInt(r.quantity) || 0;
-    if (r.ticketType === 'meja') { tablesBooked += qty; seatsBooked += qty * 10; }
+    if (r.ticketType === 'meja') { tablesBooked += qty; seatsBooked += qty * 8; }
     else seatsBooked += qty;
     totalCollection += parseInt(r.totalAmount) || 0;
     if (r.hadir === 'ya') attending += parseInt(r.hadirQty) || 0;
