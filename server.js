@@ -16,9 +16,9 @@ app.use(express.static(__dirname));
 
 const CONFIG = {
   TOTAL_MEJA: 100,
-  TOTAL_KERUSI: 1000,
+  TOTAL_KERUSI: 800,
   PRICE_MEJA: 2000,
-  PRICE_KERUSI: 200,
+  PRICE_KERUSI: 250,
   EMAIL_USER: process.env.EMAIL_USER || 'jsujprn9@gmail.com',
   EMAIL_PASS: process.env.EMAIL_PASS || '',
   EMAIL_FROM: 'Malam Perdana #NismilanKitoTawan <jsujprn9@gmail.com>',
