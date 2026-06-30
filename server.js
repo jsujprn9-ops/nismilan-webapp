@@ -69,15 +69,16 @@ const storage = multer.diskStorage({
 const upload = multer({ storage, limits: { fileSize: 10 * 1024 * 1024 } });
 
 async function sendEmail(to, subject, html) {
-  if (!CONFIG.EMAIL_PASS) { console.log('EMAIL_PASS not set, skipping email'); return; }
+  if (!process.env.RESEND_API_KEY) { console.log('RESEND_API_KEY not set, skipping email'); return; }
   try {
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: { user: CONFIG.EMAIL_USER, pass: CONFIG.EMAIL_PASS }
+    await resend.emails.send({
+      from: 'onboarding@resend.dev',
+      to,
+      subject,
+      html
     });
-    await transporter.sendMail({ from: CONFIG.EMAIL_FROM, to, subject, html });
     console.log('Email sent to:', to);
-  } catch(e) { console.error('Email failed:', e.message); }
+  } catch (e) { console.error('Email failed:', e.message); }
 }
 
 async function sendConfirmationEmail(reg) {
