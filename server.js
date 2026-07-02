@@ -23,7 +23,7 @@ const CONFIG = {
   EMAIL_PASS: process.env.EMAIL_PASS || '',
   EMAIL_FROM: 'Malam Perdana #NismilanKitoTawan <jsujprn9@gmail.com>',
   DASHBOARD_SECRET: process.env.DASHBOARD_SECRET || 'jprn-urusetia-2026',
-  DATA_FILE: path.join(__dirname, 'data', 'registrations.json'),
+  DATA_FILE: '/app/data/registrations.json',
   UPLOADS_DIR: path.join(__dirname, 'uploads'),
 };
 
